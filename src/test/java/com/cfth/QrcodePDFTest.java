@@ -46,7 +46,7 @@ public class QrcodePDFTest {
         String dest = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\form\\dest.pdf";
 
         // 生成的文件路径
-        String data = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\form\\网址商品码.txt";
+        String data = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\form\\data.txt";
 
         PdfDocument srcDoc = new PdfDocument(new PdfReader(src));
         PdfPage origPage = srcDoc.getPage(1);
