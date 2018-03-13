@@ -312,7 +312,7 @@ public class GeneratorForm extends JFrame {
         });
 
         setTypeComboBox.setModel(new DefaultComboBoxModel(
-                new String[]{"png", "jpg", "bmp", "gif", "eps(矢量)", "pdf(矢量)", "svg(矢量)"}));
+                new String[]{"png", "jpg", "bmp", "gif", "eps(矢量)", "pdf(矢量)", "svg(矢量)", "1-4 pdf"}));
         setTypeComboBox.addItemListener(new java.awt.event.ItemListener() {
             @Override
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -473,7 +473,11 @@ public class GeneratorForm extends JFrame {
                 if (filePath == null || "".equals(filePath)) {
                     new Dialog1("您还没有选择文件！").jd.setVisible(true);
                 } else {
-                    CreateQRcodePicByFile.create(filePath);
+                    if (setting.getQrcodeFiletype().equals("1-4 pdf")) {
+                        CreateQRcode14pdfByFile.create(filePath);
+                    } else {
+                        CreateQRcodePicByFile.create(filePath);
+                    }
                 }
             }
         });
@@ -555,6 +559,9 @@ public class GeneratorForm extends JFrame {
             case 6:
                 setting.setQrcodeFiletype("svg");
                 break;
+            case 7:
+                setting.setQrcodeFiletype("1-4 pdf");
+                break;
         }
         try {
             this.crateQRcode();
@@ -625,7 +632,7 @@ public class GeneratorForm extends JFrame {
 
             try {
                 if (setting.getQrcodeFiletype().equals("eps") || setting.getQrcodeFiletype().equals("pdf")
-                        || setting.getQrcodeFiletype().equals("svg")) {
+                        || setting.getQrcodeFiletype().equals("svg") || setting.getQrcodeFiletype().equals("1-4 pdf")) {
                     if (setting.getQrcodeFiletype().equals("eps")) {
                         ZxingHandler.createEPSQRCode(setting, file, jTextArea1.getText());
                     }

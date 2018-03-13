@@ -279,6 +279,28 @@ public class ZxingHandler {
     }
 
     /**
+     * 删除二维码白边
+     * @param matrix
+     * @return
+     */
+    public static BitMatrix deleteWhite(BitMatrix matrix){
+        int[] rec = matrix.getEnclosingRectangle();
+        int resWidth = rec[2] + 1;
+        int resHeight = rec[3] + 1;
+
+        BitMatrix resMatrix = new BitMatrix(resWidth, resHeight);
+        resMatrix.clear();
+        for (int i = 0; i < resWidth; i++) {
+            for (int j = 0; j < resHeight; j++) {
+                if (matrix.get(i + rec[0], j + rec[1])) {
+                    resMatrix.set(i, j);
+                }
+            }
+        }
+        return resMatrix;
+    }
+
+    /**
      * 返回认证颜色的 BufferedImage
      *
      * @param matrix 输入一个已有的BitMatrix 对象，这个对象中已经存放了一个二维码
