@@ -28,7 +28,7 @@ public class NewPageTest {
         // 模板文件路径
         String SRC = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\1-4.pdf";
         // 生成的文件路径
-        String dest = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\13.pdf";
+        String dest = "E:\\workspace\\intellij IDEA\\QRCode-JFrame\\newPage.pdf";
 
         PdfDocument document = new PdfDocument(new PdfReader(SRC));
         PdfPage origPage = document.getPage(1);
