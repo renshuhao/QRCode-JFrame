@@ -55,6 +55,7 @@ public class QrcodePDFTest {
 
         PdfDocument descDoc = new PdfDocument(new PdfWriter(dest));
         descDoc.addEventHandler(PdfDocumentEvent.INSERT_PAGE, new MyEventHandler(origPage));
+        descDoc.addEventHandler(PdfDocumentEvent.END_PAGE, new MyEndPageEventHandler(origPage));
 
         Document doc = new Document(descDoc, new PageSize(origPage.getPageSize()));
         PdfAcroForm form = PdfAcroForm.getAcroForm(descDoc, true);
@@ -200,6 +201,19 @@ public class QrcodePDFTest {
                     TextAlignment.CENTER, VerticalAlignment.MIDDLE, 45);*/
 
             pdfCanvas.release();
+        }
+    }
+
+
+    public static class MyEndPageEventHandler implements IEventHandler {
+        PdfPage origPage;
+        public MyEndPageEventHandler(PdfPage origPage){
+            this.origPage = origPage;
+        }
+
+        @Override
+        public void handleEvent(Event event) {
+
         }
     }
 

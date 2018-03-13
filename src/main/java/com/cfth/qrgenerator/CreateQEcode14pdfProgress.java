@@ -165,7 +165,7 @@ public class CreateQEcode14pdfProgress extends Thread {
         float width = rectangle.getWidth();
         float height = rectangle.getHeight();
 
-        BitMatrix bitMatrix = ZxingHandler.GetBitMatrix(content, 1, com.google.zxing.qrcode.decoder.ErrorCorrectionLevel.H, 0);
+        BitMatrix bitMatrix = ZxingHandler.GetBitMatrix(content, 1, com.google.zxing.qrcode.decoder.ErrorCorrectionLevel.M, 0);
         BufferedImage bimage = ZxingHandler.toBufferedImage(bitMatrix);
         Image image3 = new Image(ImageDataFactory.create(bimage, java.awt.Color.BLACK));
         image3.scaleAbsolute(width, height);
